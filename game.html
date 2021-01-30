@@ -29,22 +29,23 @@
 
   <br><br>
 
-  <div class="content row justify-content-center text-center m5">
+  <div class="content row text-center">
 
-    <div class="col">
+    <div class="col" style="margin: 10% 5%;">
       
-		<br>
+      <p style="display: inline;" id="virus"></p>
+		  <br>
+		  <p style="display: inline;" id="playername"></p>
+		  <p style="display: inline;" id="rule"></p>
 
-		<br><br><br><br><br>
-
-		<p style="display: inline;" id="virus"></p>
-		<br>
-		<p style="display: inline;" id="playername"></p>
-		<p style="display: inline;" id="rule"></p>
-		<br>
-		<button type="button" class="btn btn-secondary" onclick="getRule()" style="margin-top: 100px;"
-			id="get_rule">Get a New Rule</button>
     </div>
+  </div>
+  <div class="content row" style="text-align: center;">
+  <div class="col">
+    <button type="button" class="btn btn-secondary" onclick="getRule()" style="position: absolute; bottom: 15%; margin-left: -5%;"
+    id="get_rule">Get a New Rule
+  </button>
+  </div>
   </div>
 </body>
 
