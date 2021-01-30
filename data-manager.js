@@ -22,34 +22,42 @@ var deck2 = [];
 var deck3 = [];
 var deck4 = [];
 
-function readGSheetsDeck1() {
-    GSheetReader(optionsGeneral, generatedDeck => {
-        deck1 = generatedDeck;
-        setDLFlag(1);
-    })
+/**
+ * Parse the data from the specified page of the PTPP Rule Deck spreadsheet
+ * @param {Number} deckNum the deck being parsed
+ */
+function readGSheetsDeck(deckNum) {
+    switch(deckNum) {
+        case 1:
+            GSheetReader(optionsGeneral, generatedDeck => {
+                deck1 = generatedDeck;
+                setDLFlag(1);
+            });
+            break;
+        case 2:
+            GSheetReader(optionsFrisbee, generatedDeck => {
+                deck2 = generatedDeck;
+                setDLFlag(2);
+            });
+            break;
+        case 3:
+            GSheetReader(optionsDrinking, generatedDeck => {
+                deck3 = generatedDeck;
+                setDLFlag(3);
+            });
+            break;
+        case 4:
+            GSheetReader(optionsStoner, generatedDeck => {
+                deck4 = generatedDeck;
+                setDLFlag(4);
+            });
+    }
 }
 
-function readGSheetsDeck2() {
-    GSheetReader(optionsFrisbee, generatedDeck => {
-        deck2 = generatedDeck;
-        setDLFlag(2);
-    })
-}
-
-function readGSheetsDeck3() {
-    GSheetReader(optionsDrinking, generatedDeck => {
-        deck3 = generatedDeck;
-        setDLFlag(3);
-    })
-}
-
-function readGSheetsDeck4() {
-    GSheetReader(optionsStoner, generatedDeck => {
-        deck4 = generatedDeck;
-        setDLFlag(4);
-    })
-}
-
+/**
+ * Either set all download check flags to false, or set the specified flag to true
+ * @param {Number} deckNum if 1-4, the specific deck to flag, otherwise the initializer
+ */
 function setDLFlag(deckNum) {
     switch(deckNum) {
         case 0:
@@ -72,6 +80,10 @@ function setDLFlag(deckNum) {
     }
 }
 
+/**
+ * Fetch the current download state of the specified deck
+ * @param {Number} deckNum the deck flag being fetched
+ */
 function fetchDLFlag(deckNum) {
     switch(deckNum) {
         case 1:
