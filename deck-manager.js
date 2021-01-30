@@ -1,19 +1,19 @@
 const GSheetReader = require('g-sheets-api');
 
-const optionsGeneral = {
-    sheetID: '1Maer5sI2D3_Vj96OxOx2aE8ycsNNBmcLtG992kFFZ78',
+const options1 = {
+    sheetId: '1Maer5sI2D3_Vj96OxOx2aE8ycsNNBmcLtG992kFFZ78',
     sheetNumber: 1,
 };
-const optionsFrisbee = {
-    sheetID: '1Maer5sI2D3_Vj96OxOx2aE8ycsNNBmcLtG992kFFZ78',
+const options2 = {
+    sheetId: '1Maer5sI2D3_Vj96OxOx2aE8ycsNNBmcLtG992kFFZ78',
     sheetNumber: 2,
 };
-const optionsDrinking = {
-    sheetID: '1Maer5sI2D3_Vj96OxOx2aE8ycsNNBmcLtG992kFFZ78',
+const options3 = {
+    sheetId: '1Maer5sI2D3_Vj96OxOx2aE8ycsNNBmcLtG992kFFZ78',
     sheetNumber: 3,
 };
-const optionsStoner = {
-    sheetID: '1Maer5sI2D3_Vj96OxOx2aE8ycsNNBmcLtG992kFFZ78',
+const options4 = {
+    sheetId: '1Maer5sI2D3_Vj96OxOx2aE8ycsNNBmcLtG992kFFZ78',
     sheetNumber: 4,
 };
 
@@ -29,25 +29,25 @@ var deck4 = [];
 function readGSheetsDeck(deckNum) {
     switch(deckNum) {
         case 1:
-            GSheetReader(optionsGeneral, generatedDeck => {
+            GSheetReader(options1, generatedDeck => {
                 deck1 = generatedDeck;
                 setDLFlag(1);
             });
             break;
         case 2:
-            GSheetReader(optionsFrisbee, generatedDeck => {
+            GSheetReader(options2, generatedDeck => {
                 deck2 = generatedDeck;
                 setDLFlag(2);
             });
             break;
         case 3:
-            GSheetReader(optionsDrinking, generatedDeck => {
+            GSheetReader(options3, generatedDeck => {
                 deck3 = generatedDeck;
                 setDLFlag(3);
             });
             break;
         case 4:
-            GSheetReader(optionsStoner, generatedDeck => {
+            GSheetReader(options4, generatedDeck => {
                 deck4 = generatedDeck;
                 setDLFlag(4);
             });
