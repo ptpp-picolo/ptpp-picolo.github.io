@@ -56,16 +56,10 @@ function readGSheetsDeck(deckNum) {
 
 /**
  * Either set all download check flags to false, or set the specified flag to true
- * @param {Number} deckNum if 1-4, the specific deck to flag, otherwise the initializer
+ * @param {Number} deckNum if 1-4, the specific deck to flag, otherwise default
  */
 function setDLFlag(deckNum) {
     switch(deckNum) {
-        case 0:
-            sessionStorage.setItem("DLFlag1", false);
-            sessionStorage.setItem("DLFlag2", false);
-            sessionStorage.setItem("DLFlag3", false);
-            sessionStorage.setItem("DLFlag4", false);
-            break;
         case 1:
             sessionStorage.setItem("DLFlag1", true);
             break;
@@ -77,6 +71,12 @@ function setDLFlag(deckNum) {
             break;
         case 4:
             sessionStorage.setItem("DLFlag4", true);
+            break;
+        default:
+            sessionStorage.setItem("DLFlag1", false);
+            sessionStorage.setItem("DLFlag2", false);
+            sessionStorage.setItem("DLFlag3", false);
+            sessionStorage.setItem("DLFlag4", false);
     }
 }
 
