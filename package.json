@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "g-sheets-api": "^1.4.1"
+  }
+}
