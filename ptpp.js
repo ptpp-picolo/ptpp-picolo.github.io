@@ -5,6 +5,7 @@ var ruleChecks = [];			// The array of rule checks
  * Initialize all of the inputted data and transfer to the main game HTML page
  */
 function startGame() {
+	setDLFlag(0);
 	var gameLength = document.getElementById('game-length-selector').value;
     if (playerNames.length == 0) {
 		// no players submitted
@@ -22,18 +23,30 @@ function startGame() {
 		// all data inputted correctly
 		ruleChecks = [];
 		if( $('#deck1Check').is(':checked')){
+			if(!fetchDLFlag(1)) {
+				readGSheetsDeck(1);
+			}
 			ruleDeck = ruleDeck.concat(deck1);
 			ruleChecks = ruleChecks.concat(1);
 		}
 		if( $('#deck2Check').is(':checked')){
+			if(!fetchDLFlag(2)) {
+				readGSheetsDeck(2);
+			}
 			ruleDeck = ruleDeck.concat(deck2);
 			ruleChecks = ruleChecks.concat(2);
 		}
 		if( $('#deck3Check').is(':checked')){
+			if(!fetchDLFlag(3)) {
+				readGSheetsDeck(3);
+			}
 			ruleDeck = ruleDeck.concat(deck3);
 			ruleChecks = ruleChecks.concat(3);
 		}
 		if( $('#deck4Check').is(':checked')){
+			if(!fetchDLFlag(4)) {
+				readGSheetsDeck(4);
+			}
 			ruleDeck = ruleDeck.concat(deck4);
 			ruleChecks = ruleChecks.concat(4);
 		}
