@@ -5,7 +5,10 @@ var playerNames = [];           // The array of player names
  * Retrieve the array of player names from session storage
  */
 function fetchPlayerSession(){
-	playerNames = sessionStorage.getItem("playerNames").split(",");
+	p = sessionStorage.getItem("playerNames");
+	if(p != null){
+		playerNames = p.split(",");
+	}
 }
 
 /**

@@ -10,33 +10,45 @@ var virusCount = 0;				// Current amount of active viruses
 var activeViruses = [];			// Array of viruses currently in effect
 var activeCooldowns = [];		// Array of rules currently on cooldown
 
-var ruleDeckLocs = [];
+var ruleDeckCVSs = [];
 /**
  * Retrieve the active rule deck from session storage
  */
  
-async function loadDecks(){
-	const fileUrl1 = 'https://github.com/ptpp-picolo/ptpp-picolo.github.io/tree/ezra-dev/decks/deck1' ;
+function loadDecks(){
+	const fileUrl1 = 'https://raw.githubusercontent.com/ptpp-picolo/ptpp-picolo.github.io/ezra-dev/decks/deck1.csv' ;
+	ruleDeckCVSs.push(loadDeckText(fileUrl1));
+	const fileUrl2 = 'https://raw.githubusercontent.com/ptpp-picolo/ptpp-picolo.github.io/ezra-dev/decks/deck2.csv' ;
+	ruleDeckCVSs.push(loadDeckText(fileUrl2));
+	const fileUrl3 = 'https://raw.githubusercontent.com/ptpp-picolo/ptpp-picolo.github.io/ezra-dev/decks/deck3.csv' ;
+	ruleDeckCVSs.push(loadDeckText(fileUrl3));
+	const fileUrl4 = 'https://raw.githubusercontent.com/ptpp-picolo/ptpp-picolo.github.io/ezra-dev/decks/deck4.csv' ;
+	ruleDeckCVSs.push(loadDeckText(fileUrl4));
+}
 
-	await fetch(fileUrl)
-		.then( r => r.text() )
-		.then( t => console.log(t) )
-	
+function loadDeckText(path){
+	var objReq = new XMLHttpRequest();
+	objReq.open('GET', path, false); //synchronous is depricated but it simplifies code
+	objReq.send();
+	return objReq.responseText;
 }
  
  
-function fetchRuleSession() {
+function fetchDecks() {
 	ruleDeck = [];
 	ruleChecks = sessionStorage.getItem("ruleChecks").split(",");
 	for(var i = 0; i < ruleChecks.length; i++){
-		deckLoc = ruleDeckLocs(ruleChecks[i]);
-		ruleDeck.push(csvJSON(deckLoc));
+		deckText = ruleDeckCVSs[ruleChecks[i]-1];
+		ruleDeck = ruleDeck.concat(csvJSON(deckText));
 	}
 
 }
 
-function csvJSON(csv){
+function fetchRuleSession() {
+	ruleChecks = sessionStorage.getItem("ruleChecks").split(",");
+}
 
+function csvJSON(csv){
   var lines=csv.split("\n");
 
   var result = [];
@@ -59,8 +71,9 @@ function csvJSON(csv){
       result.push(obj);
 
   }
-  //return result; //JavaScript object
-  return JSON.stringify(result); //JSON
+  
+  return result; //JavaScript object
+  //return JSON.stringify(result); //JSON
 }
 
 /**
@@ -75,7 +88,10 @@ function setRuleSession(rules) {
  * Retrieve the rule checks from session storage
  */
 function fetchRuleChecksSession() {
-	ruleChecks = sessionStorage.getItem("ruleChecks").split(",");
+	c = sessionStorage.getItem("ruleChecks");
+	if(c != null){
+		ruleChecks = c.split(",");
+	}
 }
 
 /**

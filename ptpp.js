@@ -5,7 +5,7 @@ var ruleChecks = [];			// The array of rule checks
  * Initialize all of the inputted data and transfer to the main game HTML page
  */
 function startGame() {
-	setDLFlag(0);
+
 	var gameLength = document.getElementById('game-length-selector').value;
     if (playerNames.length == 0) {
 		// no players submitted
