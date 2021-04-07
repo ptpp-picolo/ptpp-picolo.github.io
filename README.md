@@ -1,4 +1,4 @@
-# ptpp-picolo.github.io
+# ptpp-picolo-vanilla_webapp
 
 This is a homemade version of the drinking game app, [Picolo](https://play.google.com/store/apps/details?id=com.picolo.android&hl=en_US&gl=US).
 
@@ -15,21 +15,20 @@ Here is what we have working:
   * Once the players start the game, a random rule is selected everytime the users click on 'Get a New Rule'
   * The logic for virus rules
   * The logic for rules that target a random player
+  * Cooldown logic so that rules don't repeat themselves too often
 * Logic to temporarily save a session
 * Basic structure of rule decks with at least a few rules in each deck
 * User can choose different game lengths
+* Hosted [website](https://ptpp-picolo.github.io/) on GitHub 
 
-Current to-do:
-* 1. Have cooldown logic that ensures rules aren't repeated too quickly (use queue to implement efficiently) - ezra (push to ezra-dev)
-* 2. Script to input new unique rules - eusman (new branch)
-* 3. UI stuff: - haley (new branch off of ezra-dev)
+To-do:
+* 1. Manually parse through the jumble of ways we've collected rules and add them all to 'PTPP rules' file found in Google Drive
+* 2. Write script to parse rules from csv of 'PTPP rules' file found on Google Drive
+* 3. UI stuff:
   * Figure out how to add a player just by clicking 'enter'
-  * Shorten padding for rules during gameplay
-  * Put 'get new rule' button at the top of the page
-* 4. Refactor code for efficiency - everyone
+  * Fix padding for rules during gameplay
+  * Make things look nice/readable on mobile version of website
+* 4. Refactor code for efficiency
 
-Final steps:
-* Make more rules to add to all the decks (potentially meet over zoom and have anyone join who wants to)
-* Nicer UI in general
-* UI that will work for mobile use
-* Publish as an actual website using github
+Future work:
+* Add rules containing multiple names
