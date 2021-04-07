@@ -10,11 +10,57 @@ var virusCount = 0;				// Current amount of active viruses
 var activeViruses = [];			// Array of viruses currently in effect
 var activeCooldowns = [];		// Array of rules currently on cooldown
 
+var ruleDeckLocs = [];
 /**
  * Retrieve the active rule deck from session storage
  */
+ 
+async function loadDecks(){
+	const fileUrl1 = 'https://github.com/ptpp-picolo/ptpp-picolo.github.io/tree/ezra-dev/decks/deck1' ;
+
+	await fetch(fileUrl)
+		.then( r => r.text() )
+		.then( t => console.log(t) )
+	
+}
+ 
+ 
 function fetchRuleSession() {
-	ruleDeck = JSON.parse(sessionStorage.getItem("ruleDeck"));
+	ruleDeck = [];
+	ruleChecks = sessionStorage.getItem("ruleChecks").split(",");
+	for(var i = 0; i < ruleChecks.length; i++){
+		deckLoc = ruleDeckLocs(ruleChecks[i]);
+		ruleDeck.push(csvJSON(deckLoc));
+	}
+
+}
+
+function csvJSON(csv){
+
+  var lines=csv.split("\n");
+
+  var result = [];
+
+  // NOTE: If your columns contain commas in their values, you'll need
+  // to deal with those before doing the next step 
+  // (you might convert them to &&& or something, then covert them back later)
+  // jsfiddle showing the issue https://jsfiddle.net/
+  var headers=lines[0].split(",");
+
+  for(var i=1;i<lines.length;i++){
+
+      var obj = {};
+      var currentline=lines[i].split(",");
+
+      for(var j=0;j<headers.length;j++){
+          obj[headers[j]] = currentline[j];
+      }
+
+      result.push(obj);
+
+  }
+  //return result; //JavaScript object
+  return JSON.stringify(result); //JSON
 }
 
 /**
