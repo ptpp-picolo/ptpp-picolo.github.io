@@ -1,4 +1,4 @@
-# ptpp-picolo-vanilla_webapp
+# PTPP Picolo
 
 This is a homemade version of the drinking game app, [Picolo](https://play.google.com/store/apps/details?id=com.picolo.android&hl=en_US&gl=US).
 
