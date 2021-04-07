@@ -26,9 +26,8 @@ To-do:
 * 2. Write script to parse rules from csv of 'PTPP rules' file found on Google Drive
 * 3. UI stuff:
   * Figure out how to add a player just by clicking 'enter'
-  * Fix padding for rules during gameplay
   * Make things look nice/readable on mobile version of website
-* 4. Refactor code for efficiency
 
 Future work:
 * Add rules containing multiple names
+* Refactor code for efficiency
