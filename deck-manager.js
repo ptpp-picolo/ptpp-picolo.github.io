@@ -1,21 +1,7 @@
-const GSheetReader = require('g-sheets-api');
-
-const options1 = {
-    sheetId: '1Maer5sI2D3_Vj96OxOx2aE8ycsNNBmcLtG992kFFZ78',
-    sheetNumber: 1,
-};
-const options2 = {
-    sheetId: '1Maer5sI2D3_Vj96OxOx2aE8ycsNNBmcLtG992kFFZ78',
-    sheetNumber: 2,
-};
-const options3 = {
-    sheetId: '1Maer5sI2D3_Vj96OxOx2aE8ycsNNBmcLtG992kFFZ78',
-    sheetNumber: 3,
-};
-const options4 = {
-    sheetId: '1Maer5sI2D3_Vj96OxOx2aE8ycsNNBmcLtG992kFFZ78',
-    sheetNumber: 4,
-};
+const sheet1Url = 'https://spreadsheets.google.com/feeds/cells/1Maer5sI2D3_Vj96OxOx2aE8ycsNNBmcLtG992kFFZ78/1/public/full?alt=json';
+const sheet2Url = 'https://spreadsheets.google.com/feeds/cells/1Maer5sI2D3_Vj96OxOx2aE8ycsNNBmcLtG992kFFZ78/2/public/full?alt=json';
+const sheet3Url = 'https://spreadsheets.google.com/feeds/cells/1Maer5sI2D3_Vj96OxOx2aE8ycsNNBmcLtG992kFFZ78/3/public/full?alt=json';
+const sheet4Url = 'https://spreadsheets.google.com/feeds/cells/1Maer5sI2D3_Vj96OxOx2aE8ycsNNBmcLtG992kFFZ78/4/public/full?alt=json';
 
 var deck1 = [];
 var deck2 = [];
@@ -23,36 +9,149 @@ var deck3 = [];
 var deck4 = [];
 
 /**
- * Parse the data from the specified page of the PTPP Rule Deck spreadsheet
- * @param {Number} deckNum the deck being parsed
- */
-function readGSheetsDeck(deckNum) {
+ * Download the specified deck from the google spreadsheet of rules
+ * @param deckNum the deck to download
+*/
+$.DLDeck = function(deckNum) {
+    // the 5 attributes of the JSON objects
+    var ruleID;
+    var nameRule;
+    var virusRule;
+    var ruleString;
+    var EOVRuleString;
     switch(deckNum) {
+        // which of the 4 decks to parse the sheet google sheet for
         case 1:
-            GSheetReader(options1, generatedDeck => {
-                deck1 = generatedDeck;
-                setDLFlag(1);
-            });
+            $.getJSON(sheet1Url, function(data) {
+                // data.feed.entry is the array of cells in the sheet. This includes the value of the cell
+                var entry = data.feed.entry;
+                // array starts at 1 because the first row of cells is the titles
+                // entry.length / 5 is the amount of rows of data
+                for(var i = 1; i < (entry.length / 5); i++) {
+                    // content.$t is the value of the cell
+                    ruleID = entry[i * 5].content.$t;
+                    
+                    // turn the y/n into true/false
+                    nameRule = entry[(i * 5) + 1].content.$t == "y";
+
+                    virusRule = entry[(i * 5) + 2].content.$t == "y";
+
+                    ruleString = entry[(i * 5) + 3].content.$t;
+
+                    if(entry[(i * 5) + 4].content.$t == "-1") {
+                        EOVRuleString = "";
+                    } else {
+                        EOVRuleString = entry[(i * 5) + 4].content.$t
+                    }
+
+                    var newObj = {
+                        ruleID: ruleID,
+                        nameRule: nameRule,
+                        virusRule: virusRule,
+                        ruleString: ruleString,
+                        EOVRuleString: EOVRuleString
+                    }
+
+                    // add the generated object to the appropriate deck
+                    deck1.push(newObj);
+                }
+            })
+            setDLFlag(1);
             break;
         case 2:
-            GSheetReader(options2, generatedDeck => {
-                deck2 = generatedDeck;
-                setDLFlag(2);
-            });
+            $.getJSON(sheet2Url, function(data) {
+                var entry = data.feed.entry;
+                for(var i = 1; i < (entry.length / 5); i++) {
+                    ruleID = entry[i * 5].content.$t;
+                    
+                    nameRule = entry[(i * 5) + 1].content.$t == "y";
+
+                    virusRule = entry[(i * 5) + 2].content.$t == "y";
+
+                    ruleString = entry[(i * 5) + 3].content.$t;
+
+                    if(entry[(i * 5) + 4].content.$t == "-1") {
+                        EOVRuleString = "";
+                    } else {
+                        EOVRuleString = entry[(i * 5) + 4].content.$t
+                    }
+
+                    var newObj = {
+                        ruleID: ruleID,
+                        nameRule: nameRule,
+                        virusRule: virusRule,
+                        ruleString: ruleString,
+                        EOVRuleString: EOVRuleString
+                    }
+
+                    deck2.push(newObj);
+                }
+            })
+            setDLFlag(2);
             break;
         case 3:
-            GSheetReader(options3, generatedDeck => {
-                deck3 = generatedDeck;
-                setDLFlag(3);
-            });
+            $.getJSON(sheet3Url, function(data) {
+                var entry = data.feed.entry;
+                for(var i = 1; i < (entry.length / 5); i++) {
+                    ruleID = entry[i * 5].content.$t;
+                    
+                    nameRule = entry[(i * 5) + 1].content.$t == "y";
+
+                    virusRule = entry[(i * 5) + 2].content.$t == "y";
+
+                    ruleString = entry[(i * 5) + 3].content.$t;
+
+                    if(entry[(i * 5) + 4].content.$t == "-1") {
+                        EOVRuleString = "";
+                    } else {
+                        EOVRuleString = entry[(i * 5) + 4].content.$t
+                    }
+
+                    var newObj = {
+                        ruleID: ruleID,
+                        nameRule: nameRule,
+                        virusRule: virusRule,
+                        ruleString: ruleString,
+                        EOVRuleString: EOVRuleString
+                    }
+
+                    deck3.push(newObj);
+                }
+            })
+            setDLFlag(3);
             break;
         case 4:
-            GSheetReader(options4, generatedDeck => {
-                deck4 = generatedDeck;
-                setDLFlag(4);
-            });
+            $.getJSON(sheet4Url, function(data) {
+                var entry = data.feed.entry;
+                for(var i = 1; i < (entry.length / 5); i++) {
+                    ruleID = entry[i * 5].content.$t;
+                    
+                    nameRule = entry[(i * 5) + 1].content.$t == "y";
+
+                    virusRule = entry[(i * 5) + 2].content.$t == "y";
+
+                    ruleString = entry[(i * 5) + 3].content.$t;
+
+                    if(entry[(i * 5) + 4].content.$t == "-1") {
+                        EOVRuleString = "";
+                    } else {
+                        EOVRuleString = entry[(i * 5) + 4].content.$t
+                    }
+
+                    var newObj = {
+                        ruleID: ruleID,
+                        nameRule: nameRule,
+                        virusRule: virusRule,
+                        ruleString: ruleString,
+                        EOVRuleString: EOVRuleString
+                    }
+
+                    deck4.push(newObj);
+                }
+            })
+            setDLFlag(4);
     }
-}
+};
 
 /**
  * Either set all download check flags to false, or set the specified flag to true

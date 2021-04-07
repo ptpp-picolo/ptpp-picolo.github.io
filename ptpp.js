@@ -23,29 +23,29 @@ function startGame() {
 		// all data inputted correctly
 		ruleChecks = [];
 		if( $('#deck1Check').is(':checked')){
-			if(!fetchDLFlag(1)) {
-				readGSheetsDeck(1);
+			if(fetchDLFlag(1) == 'false') {
+				$(document).DLDeck(1);
 			}
 			ruleDeck = ruleDeck.concat(deck1);
 			ruleChecks = ruleChecks.concat(1);
 		}
 		if( $('#deck2Check').is(':checked')){
 			if(!fetchDLFlag(2)) {
-				readGSheetsDeck(2);
+				DLDeck(2);
 			}
 			ruleDeck = ruleDeck.concat(deck2);
 			ruleChecks = ruleChecks.concat(2);
 		}
 		if( $('#deck3Check').is(':checked')){
 			if(!fetchDLFlag(3)) {
-				readGSheetsDeck(3);
+				DLDeck(3);
 			}
 			ruleDeck = ruleDeck.concat(deck3);
 			ruleChecks = ruleChecks.concat(3);
 		}
 		if( $('#deck4Check').is(':checked')){
 			if(!fetchDLFlag(4)) {
-				readGSheetsDeck(4);
+				DLDeck(4);
 			}
 			ruleDeck = ruleDeck.concat(deck4);
 			ruleChecks = ruleChecks.concat(4);
