@@ -9,12 +9,13 @@ var virusCount = 0;				// Current amount of active viruses
 
 var activeViruses = [];			// Array of viruses currently in effect
 var activeCooldowns = [];		// Array of rules currently on cooldown
+// test 
 
 var ruleDeckCVSs = [];
 /**
  * Retrieve the active rule deck from session storage
  */
- 
+
 function loadDecks(){
 	const fileUrl1 = 'https://raw.githubusercontent.com/ptpp-picolo/ptpp-picolo.github.io/ezra-dev/decks/deck1.csv' ;
 	ruleDeckCVSs.push(loadDeckText(fileUrl1));
@@ -32,8 +33,8 @@ function loadDeckText(path){
 	objReq.send();
 	return objReq.responseText;
 }
- 
- 
+
+
 function fetchDecks() {
 	ruleDeck = [];
 	ruleChecks = sessionStorage.getItem("ruleChecks").split(",");
@@ -54,7 +55,7 @@ function csvJSON(csv){
   var result = [];
 
   // NOTE: If your columns contain commas in their values, you'll need
-  // to deal with those before doing the next step 
+  // to deal with those before doing the next step
   // (you might convert them to &&& or something, then covert them back later)
   // jsfiddle showing the issue https://jsfiddle.net/
   var headers=lines[0].split(",");
@@ -71,7 +72,7 @@ function csvJSON(csv){
       result.push(obj);
 
   }
-  
+
   return result; //JavaScript object
   //return JSON.stringify(result); //JSON
 }
@@ -96,7 +97,7 @@ function fetchRuleChecksSession() {
 
 /**
  * Not exactly sure what this is, it's not doing anything rn
- * @param {Array} rules 
+ * @param {Array} rules
  */
 function setRuleChecksSession(rules) {
 	sessionStorage.setItem("ruleChecks", rules);
@@ -148,7 +149,7 @@ function addActiveCooldown(id) {
  * Retrieve the ID of the expired timer from the active virus array, and remove it
  * @returns {Number} The ID of the expired timer, if there is one. If there isn't, return 0
  */
-function getExpiredVirusID() {	
+function getExpiredVirusID() {
 	for(var i = 0; i < activeViruses.length; i++) {
 		if(activeViruses[i].timer == 0) {
 			return activeViruses[i].ruleID;
@@ -257,10 +258,10 @@ function getRule() {
         } else {
             document.getElementById('playername').innerHTML = ''
 		}
-		
+
 		document.getElementById("rule").innerHTML = "<span style='color: #696969; font-size: 50px'>" + rule.RuleString + "</span>";
 		document.body.style.backgroundColor = getGoodLookingColor()
-		
+
 		ruleCount++;
 		// ending a virus doesn't count as a rule for virus timers
 		// or cooldowns, so only count new rules for the rule count
