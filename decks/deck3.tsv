@@ -1,0 +1,5 @@
+ruleID	ruleString	nameRule	virusRule	EOVRuleString
+3001	Take five sips if you're wearing a black shirt	n	n	
+3002	, kill your drink	y	n	
+3003	Everyone take 5 sips	n	n	
+3004	Take 3 sips everytime you make eye contact with someone	n	y	You no longer have to drink when you make eye contact with someone
