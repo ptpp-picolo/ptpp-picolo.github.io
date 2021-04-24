@@ -33,4 +33,5 @@ Future work:
 * Allow users to add their own rules/ make their own decks
 * Make admin account for devs to add rules through UI of game
 * Make account/profile ability for user
+  * Allow users to remove rules they don't like from decks
 * Refactor code for efficiency
