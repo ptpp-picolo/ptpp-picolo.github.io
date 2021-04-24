@@ -16,13 +16,13 @@ var ruleDeckCVSs = [];
  */
  
 function loadDecks(){
-	const fileUrl1 = 'https://raw.githubusercontent.com/ptpp-picolo/ptpp-picolo.github.io/ezra-dev/decks/deck1.csv' ;
+	const fileUrl1 = 'https://raw.githubusercontent.com/ptpp-picolo/ptpp-picolo.github.io/tsv-parsing/decks/deck1.tsv' ;
 	ruleDeckCVSs.push(loadDeckText(fileUrl1));
-	const fileUrl2 = 'https://raw.githubusercontent.com/ptpp-picolo/ptpp-picolo.github.io/ezra-dev/decks/deck2.csv' ;
+	const fileUrl2 = 'https://raw.githubusercontent.com/ptpp-picolo/ptpp-picolo.github.io/tsv-parsing/decks/deck2.tsv' ;
 	ruleDeckCVSs.push(loadDeckText(fileUrl2));
-	const fileUrl3 = 'https://raw.githubusercontent.com/ptpp-picolo/ptpp-picolo.github.io/ezra-dev/decks/deck3.csv' ;
+	const fileUrl3 = 'https://raw.githubusercontent.com/ptpp-picolo/ptpp-picolo.github.io/tsv-parsing/decks/deck3.tsv' ;
 	ruleDeckCVSs.push(loadDeckText(fileUrl3));
-	const fileUrl4 = 'https://raw.githubusercontent.com/ptpp-picolo/ptpp-picolo.github.io/ezra-dev/decks/deck4.csv' ;
+	const fileUrl4 = 'https://raw.githubusercontent.com/ptpp-picolo/ptpp-picolo.github.io/tsv-parsing/decks/deck4.tsv' ;
 	ruleDeckCVSs.push(loadDeckText(fileUrl4));
 }
 
@@ -38,7 +38,7 @@ function fetchDecks() {
 	ruleDeck = [];
 	ruleChecks = sessionStorage.getItem("ruleChecks").split(",");
 	for(var i = 0; i < ruleChecks.length; i++){
-		deckText = ruleDeckCVSs[ruleChecks[i]-1];
+		deckText = ruleDeckCVSs[ruleChecks[i] - 1];
 		ruleDeck = ruleDeck.concat(csvJSON(deckText));
 	}
 
@@ -48,23 +48,19 @@ function fetchRuleSession() {
 	ruleChecks = sessionStorage.getItem("ruleChecks").split(",");
 }
 
-function csvJSON(csv){
-  var lines=csv.split("\n");
+function csvJSON(tsv){
+  var lines = tsv.split("\n");
 
   var result = [];
 
-  // NOTE: If your columns contain commas in their values, you'll need
-  // to deal with those before doing the next step 
-  // (you might convert them to &&& or something, then covert them back later)
-  // jsfiddle showing the issue https://jsfiddle.net/
-  var headers=lines[0].split(",");
+  var headers = lines[0].split("\t");
 
-  for(var i=1;i<lines.length;i++){
+  for(var i = 1; i < lines.length; i++) {
 
       var obj = {};
-      var currentline=lines[i].split(",");
+      var currentline = lines[i].split("\t");
 
-      for(var j=0;j<headers.length;j++){
+      for(var j = 0; j < headers.length; j++){
           obj[headers[j]] = currentline[j];
       }
 
