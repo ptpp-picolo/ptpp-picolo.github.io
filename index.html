@@ -39,58 +39,64 @@
   <!-- Main Page -->
   <div class="row text-center">
     <!-- Adding a Player to the game -->
-    <div class="d-flex flex-column" style="background-color: #FF474A; margin-top: 60px; padding-bottom: 15px">
+    <div class="d-flex flex-column" style="margin-top: 40px">
+      <!-- Player Name Entry -->
       <form>
         <div class="form-group">
           <label for="playerName" style="color:white; font-family: 'Open Sans', sans-serif;">Enter Players:</label>
-          <input type="text" class="form-control" placeholder="Enter Player Name" id="playerName">
+          <div>
+            <input type="text" placeholder="Player Name" id="playerName">
+          </div>
         </div>
-        <button type="button" class="btn btn-secondary start_button" onclick="addPlayerName()" style="margin-top: 10px"><b>Add player</b></button>
+        <button type="button" class="btn btn-secondary start_button" onclick="addPlayerName()"><b>Add player</b></button>
       </form>
+      <!-- Name List (fills vertically) -->
       <ul id="players-list"></ul>
-      <label style="font-size: 150%; color:white; font-family: 'Open Sans', sans-serif;">Choose one or more decks to play with:</label>
-      <div class="row text-left">
-			<div class="col-xs-offset-3 col-xs-6 col-md-offset-4 col-md-4 col-lg-offset-5 col-lg-2 col-lx-offset-5 col-lx-2">
-				<div class="form-check">
-				  <input class="form-check-input" type="checkbox" value="" id="deck1Check">
-				  <label class="form-check-label" for="deck1Check" style="font-size: 125%;">
-					Deck 1: General
-				  </label>
-				</div>
-				<div class="form-check">
-				  <input class="form-check-input" type="checkbox" value="" id="deck2Check">
-				  <label class="form-check-label" for="deck2Check" style="font-size: 125%;">
-					Deck 2: Frisbee
-				  </label>
-				</div>
-				<div class="form-check">
-				  <input class="form-check-input" type="checkbox" value="" id="deck3Check">
-				  <label class="form-check-label" for="deck3Check" style="font-size: 125%;">
-					Deck 3: Heavy Drinking
-				  </label>
-				</div>
-				<div class="form-check">
-				  <input class="form-check-input" type="checkbox" value="" id="deck4Check">
-				  <label class="form-check-label" for="deck4Check" style="font-size: 125%;">
-					Deck 4: Stoner
-				  </label>
-				</div>
-			</div>
-    </div>
-    <!-- Select Game Length -->
-    <div class="game-length-chooser">
-      <label style="font-size: 150%; color:white; font-family: 'Open Sans', sans-serif;" for="game-length-selector">Choose the game length:</label>
-      <select name="game-length" id="game-length-selector">
-        <option value="null">--Choose a game length--</option>
-        <option value="short">Short (15)</option>
-        <option value="medium">Medium (30)</option>
-        <option value="long">Long (50)</option>
-        <option value="bender">Bender (150)</option>
-      </select>
-    </div>
-    <button type="button" class="btn btn-secondary start_button" onclick="startGame()"><b>Start
-          Game</b></button>
-
+      <!-- Select Deck(s)-->
+      <div class="row">
+        <label style="font-size: 150%; color:white; font-family: 'Open Sans', sans-serif; margin-top: 25px">Choose one or more decks:</label>
+        <div class="row text-left">
+          <div class="col-xs-offset-3 col-xs-6 col-md-offset-4 col-md-4 col-lg-offset-5 col-lg-2 col-lx-offset-5 col-lx-2">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="deck1Check">
+              <label class="form-check-label" for="deck1Check" style="font-size: 125%;">
+                Deck 1: General
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="deck2Check">
+              <label class="form-check-label" for="deck2Check" style="font-size: 125%;">
+                Deck 2: Frisbee
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="deck3Check">
+              <label class="form-check-label" for="deck3Check" style="font-size: 125%;">
+                Deck 3: Heavy Drinking
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="deck4Check">
+              <label class="form-check-label" for="deck4Check" style="font-size: 125%;">
+                Deck 4: Stoner
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Select Game Length -->
+      <div class="game-length-chooser" style="margin-top: 20px">
+        <label style="font-size: 150%; color:white; font-family: 'Open Sans', sans-serif;" for="game-length-selector">Choose the game length:</label>
+        <select name="game-length" id="game-length-selector" style="margin-top: 5px">
+          <option value="null">--Choose a game length--</option>
+          <option value="short">Short (15)</option>
+          <option value="medium">Medium (30)</option>
+          <option value="long">Long (50)</option>
+          <option value="bender">Bender (150)</option>
+        </select>
+      </div>
+      <!-- Start the Game -->
+      <button type="button" class="btn btn-secondary start_button" onclick="startGame()" style="margin-top: 15px"><b>StartGame</b></button>
     </div>
   </div>
 </body>
