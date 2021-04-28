@@ -29,39 +29,27 @@
 </head>
 
 <body style="background-color: gray;">
-
-
+  <!-- Header -->
   <div class="content row justify-content-center text-center" style="background-color: #FF474A;">
     <div class="col">
       <h1 style="color:white; font-family: 'Open Sans', sans-serif;"><b>&#928&#920&#928&#928</b></h1>
       <h3 style="color:white; font-family: 'Open Sans', sans-serif;"><b>Picolo for frisbee kids</b></h3>
     </div>
   </div>
-
-  <br><br>
-
-  <div class="content row justify-content-ce
-  nter text-center">
-
-    <div class="col">
+  <!-- Main Page -->
+  <div class="row text-center">
+    <!-- Adding a Player to the game -->
+    <div class="d-flex flex-column" style="background-color: #FF474A; margin-top: 60px; padding-bottom: 15px">
       <form>
         <div class="form-group">
-          <label style="color:white; font-family: 'Open Sans', sans-serif;">Add a player to the game:</label>
-          <br>
-          <input type="text" id="playerName">
-          <br>
-          <button type="button" class="btn btn-secondary start_button" onclick="addPlayerName()"><b>Add player</b></button>
+          <label for="playerName" style="color:white; font-family: 'Open Sans', sans-serif;">Enter Players:</label>
+          <input type="text" class="form-control" placeholder="Enter Player Name" id="playerName">
         </div>
+        <button type="button" class="btn btn-secondary start_button" onclick="addPlayerName()" style="margin-top: 10px"><b>Add player</b></button>
       </form>
-
-      <br>
-
-      <ul id="players-list" ></ul>
-
-      <br><br>
-
-		<label style="font-size: 150%; color:white; font-family: 'Open Sans', sans-serif;">Choose one or more decks to play with:</label>
-		<div class="row text-left">
+      <ul id="players-list"></ul>
+      <label style="font-size: 150%; color:white; font-family: 'Open Sans', sans-serif;">Choose one or more decks to play with:</label>
+      <div class="row text-left">
 			<div class="col-xs-offset-3 col-xs-6 col-md-offset-4 col-md-4 col-lg-offset-5 col-lg-2 col-lx-offset-5 col-lx-2">
 				<div class="form-check">
 				  <input class="form-check-input" type="checkbox" value="" id="deck1Check">
@@ -89,12 +77,9 @@
 				</div>
 			</div>
     </div>
-
-    <br><br>
-
+    <!-- Select Game Length -->
     <div class="game-length-chooser">
       <label style="font-size: 150%; color:white; font-family: 'Open Sans', sans-serif;" for="game-length-selector">Choose the game length:</label>
-      <br>
       <select name="game-length" id="game-length-selector">
         <option value="null">--Choose a game length--</option>
         <option value="short">Short (15)</option>
@@ -103,13 +88,8 @@
         <option value="bender">Bender (150)</option>
       </select>
     </div>
-
-
-		<br><br>
-
-      <button type="button" class="btn btn-secondary start_button" onclick="startGame()"><b>Start
+    <button type="button" class="btn btn-secondary start_button" onclick="startGame()"><b>Start
           Game</b></button>
-      <br>
 
     </div>
   </div>
