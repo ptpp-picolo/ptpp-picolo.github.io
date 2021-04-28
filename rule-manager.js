@@ -232,7 +232,7 @@ function getRule() {
 		// get the text of the expired virus then remove it from the array
 
 		document.getElementById('virus').innerHTML = "<span style='color: #696969; font-size: 50px'>End of Virus!</span>"
-		document.getElementById("rule").innerHTML = "<span style='color: #696969; font-size: 50px'>" + virusText + "</span>"
+		document.getElementById("rule").innerHTML = "<span style='color: #696969; font-size: 50px'>" + String(virusText) + "</span>"
 		// set the HTML for the respective EOV text
 	} else {
 		// new rule, can be a virus
@@ -241,8 +241,8 @@ function getRule() {
 
 		decrementTimersAndCooldowns();
 		// decrement timers before processing new rule, so that viruses don't get decremented right after they get set
-
-		if(rule.virusRule) {
+		
+		if(rule.virusRule == 'y') {
 			document.getElementById('virus').innerHTML = "<span style='color: #696969; font-size: 50px'>Virus!</span>";
 			addActiveVirus(rule.ruleID);
 			// enable virus and set timer
@@ -252,13 +252,15 @@ function getRule() {
 			// give the rule a cooldown timer for being played
 		}
 
-		if (rule.nameRule) {
+		if (rule.nameRule == 'y') {
             document.getElementById("playername").innerHTML = "<span style='color: #696969; font-size: 50px'>" + getRandomPlayer() + "</span>";
         } else {
             document.getElementById('playername').innerHTML = ''
 		}
+		console.log(rule);
+		console.log(rule.ruleString);
 		
-		document.getElementById("rule").innerHTML = "<span style='color: #696969; font-size: 50px'>" + rule.RuleString + "</span>";
+		document.getElementById("rule").innerHTML = "<span style='color: #696969; font-size: 50px'>" + String(rule.ruleString).replace(/['"]+/g, '') + "</span>";
 		document.body.style.backgroundColor = getGoodLookingColor()
 		
 		ruleCount++;
