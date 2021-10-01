@@ -87,13 +87,15 @@
       <!-- Select Game Length -->
       <div class="game-length-chooser" style="margin-top: 20px">
         <label style="font-size: 150%; color:white; font-family: 'Open Sans', sans-serif;" for="game-length-selector">Choose the game length:</label>
-        <select name="game-length" id="game-length-selector" style="margin-top: 5px">
-          <option value="null">--Choose a game length--</option>
-          <option value="short">Short (15)</option>
-          <option value="medium">Medium (30)</option>
-          <option value="long">Long (50)</option>
-          <option value="bender">Bender (150)</option>
-        </select>
+        <div>
+          <select name="game-length" id="game-length-selector" style="margin-top: 5px">
+            <option value="null">--Choose a game length--</option>
+            <option value="short">Short (15)</option>
+            <option value="medium">Medium (30)</option>
+            <option value="long">Long (50)</option>
+            <option value="bender">Bender (150)</option>
+          </select>
+        </div>
       </div>
       <!-- Start the Game -->
       <button type="button" class="btn btn-secondary start_button" onclick="startGame()" style="margin-top: 15px"><b>StartGame</b></button>
